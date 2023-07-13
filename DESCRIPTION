@@ -1,0 +1,24 @@
+Package: smosr
+Title: A suite of tools to access, download and explore ESA-BEC Soil Moisture and Ocean Salinity 
+    (SMOS) data in R
+Version: 0.1.0
+Author: Tatiana A. Shestakova [aut, cre] (https://orcid.org/0000-0002-5605-0299)
+Maintainer: Tatiana A. Shestakova <tasha.work24@gmail.com>
+Description: Provides functions that automate accessing, downloading and importing ESA-BEC
+    Soil Moisture and Ocean Salinity (SMOS) data into R. Particularly, it includes functions to 
+    search for, acquire, extract, and plot BEC-SMOS L4 soil moisture data downscaled to ~1 km 
+    spatial resolution (EASE-grid v.2).
+URL: https://github.com/ropensci/smapr_tobedone!!!!!!!!!!!!!
+License: GPL-3
+Encoding: UTF-8
+Depends: R (>= 4.0.0)
+LazyData: TRUE
+RoxygenNote: 7.2.1
+Imports:
+    fields, graphics, grDevices, lubridate, ncdf4, raster, sp, RCurl, rgdal, tidyr, utils
+Suggests: 
+    knitr, rmarkdown, testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+NeedsCompilation: no
+BugReports: https://github.com/ropensci/smosr/issues_tobedone!!!!!!!!!!!!!
