@@ -1,8 +1,0 @@
-download_smos	download_smos
-extract_smos	extract_smos
-find_smos	find_smos
-list_smos	list_smos
-missing_smos	missing_smos
-plot_raster_smos	plot_raster_smos
-plot_temporal_smos	plot_temporal_smos
-set_credentials	set_credentials
