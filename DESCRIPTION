@@ -3,10 +3,12 @@ Title: A Suite of Tools to Access, Download and Explore ESA-BEC Soil Moisture an
     (SMOS) Data in R
 Version: 1.0.0
 Date: 2023-07-13
-Authors@R: c(
-    person("Tatiana A.", "Shestakova", 
+Authors@R: 
+    c(person(given = "Tatiana A.", 
+    family = "Shestakova", 
     role = c("aut", "cre"),
-    email = "tasha.work24@gmail.com"))
+    email = "tasha.work24@gmail.com"),
+    comment = c(ORCID = "0000-0002-5605-0299"))
 Author: Tatiana A. Shestakova [aut, cre] (https://orcid.org/0000-0002-5605-0299)
 Maintainer: Tatiana A. Shestakova <tasha.work24@gmail.com>
 Description: Provides functions that automate accessing, downloading and importing ESA-BEC
