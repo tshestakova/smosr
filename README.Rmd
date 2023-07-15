@@ -70,7 +70,7 @@ plot_raster_smos(data = smos_files[13], lat = lat, lon = lon, QA = c(0,1,2,3))
 ## Getting help
 
 If you encounter a clear bug, please file an issue with a minimal reproducible 
-example on [GitHub](https://github.com/tshestakova/smosr/issues). 
+example on [GitHub](https://github.com/tshestakova/smosr/issues).
 
 For questions and other discussion, please use 
 [Stack Overflow](https://stackoverflow.com/questions/) and the [RStudio community](https://community.rstudio.com/).
