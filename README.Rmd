@@ -1,0 +1,76 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# smosr
+
+## Overview
+
+The goal of smosr is to automate accessing, downloading and importing ESA-BEC 
+Soil Moisture and Ocean Salinity (SMOS) data into R. Particularly, it includes 
+functions to search for, acquire, extract, and plot BEC-SMOS L4 soil moisture 
+data downscaled to ~1 km spatial resolution (EASE-grid v.2).
+
+## Installation
+
+Install the major version of smosr from CRAN with:
+
+```{r, eval = FALSE}
+# The easiest way to get dplyr is to install the whole tidyverse:
+install.packages("smosr")
+```
+
+### Development version
+
+To get a bug fix or to use new features of the package, you can install the 
+development version of smosr from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("tshestakova/smosr")
+```
+
+## Usage
+
+```{r example}
+library(smosr)
+# set_credentials("username", "password")
+start_date <- as.Date("2010-07-15")
+end_date <- as.Date("2022-07-15")
+date_range <- seq(start_date, end_date, by = 365)
+smos_data <- find_smos(freq = 3, orbit = "des", dates = date_range)
+
+dir.create("~/sm_example")
+download_smos(data = smos_data, dir = "~/sm_example")
+smos_files <- list_smos(dir = "~/sm_example")
+head(smos_files, 5)
+
+lat <- c(40.42, 41.90, 48.86, 52.50, 59.91)
+lon <- c(-3.70, 12.50, 2.35, 13.40, 10.75)
+sm_estimates <- extract_smos(data = smos_files, lat = lat, lon = lon)
+head(sm_estimates, 12)
+plot_temporal_smos(data = sm_estimates)
+
+lat <- c(35.00, 45.00)
+lon <- c(-10.50, 4.50)
+plot_raster_smos(data = smos_files[13], lat = lat, lon = lon, QA = 0)
+```
+
+## Getting help
+
+If you encounter a clear bug, please file an issue with a minimal reproducible 
+example on [GitHub](https://github.com/tshestakova/smosr/issues). 
+
+For questions and other discussion, please use 
+[Stack Overflow](https://stackoverflow.com/questions/) and the [RStudio community](https://community.rstudio.com/).
