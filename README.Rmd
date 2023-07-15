@@ -24,7 +24,7 @@ data downscaled to ~1 km spatial resolution (EASE-grid v.2).
 
 ## Installation
 
-Install the major version of smosr from CRAN with:
+Install the major version of smosr from CRAN repository with:
 
 ```{r, eval = FALSE}
 # The easiest way to get dplyr is to install the whole tidyverse:
@@ -64,7 +64,7 @@ plot_temporal_smos(data = sm_estimates)
 
 lat <- c(35.00, 45.00)
 lon <- c(-10.50, 4.50)
-plot_raster_smos(data = smos_files[13], lat = lat, lon = lon, QA = 0)
+plot_raster_smos(data = smos_files[13], lat = lat, lon = lon, QA = c(0,1,2,3))
 ```
 
 ## Getting help
