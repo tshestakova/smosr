@@ -43,7 +43,7 @@ devtools::install_github("tshestakova/smosr")
 
 ## Usage
 
-```{r example}
+```{r}
 library(smosr)
 
 ## to set credentials for accessing BEC server
@@ -69,17 +69,24 @@ head(smos_files, 5)
 lat <- c(38.72, 41.90, 48.86, 52.50, 59.44)
 lon <- c(-9.14, 12.50, 2.35, 13.40, 24.75)
 sm_estimates <- extract_smos(data = smos_files, lat = lat, lon = lon)
+
 head(sm_estimates, 12)
 
 # to plot extracted temporal series of soil moisture data
 plot_temporal_smos(data = sm_estimates)
+```
 
+<img src="man/figures/README-example-temp.png" width="75%" />
+
+```{r}
 # to draw a raster image of soil moisture estimates from a file with
 # desired data quality and within the specified geographical bounds
 lat <- c(35.00, 45.00)
 lon <- c(-10.50, 4.50)
 plot_raster_smos(data = smos_files[13], lat = lat, lon = lon, QA = c(0,1,2,3))
 ```
+
+<img src="man/figures/README-example-temp.png" width="75%" />
 
 ## Getting help
 
