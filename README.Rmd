@@ -21,10 +21,10 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-The goal of `smosr` package is to automate accessing, downloading and exploring 
-ESA-BEC Soil Moisture and Ocean Salinity (SMOS) data into R. Particularly, it 
-includes functions to search for, acquire, extract, and plot BEC-SMOS L4 soil 
-moisture data downscaled to ~1 km spatial resolution (EASE-grid v.2).
+The goal of `smosr` is to automate accessing, downloading and exploring ESA-BEC
+Soil Moisture and Ocean Salinity (SMOS) data into R. Particularly, it includes
+functions to search for, acquire, extract, and plot BEC-SMOS L4 soil moisture
+data downscaled to ~1 km spatial resolution (EASE-grid v.2).
 
 ## Installation
 
@@ -89,7 +89,7 @@ lon <- c(-10.50, 4.50)
 plot_raster_smos(data = smos_files[13], lat = lat, lon = lon, QA = c(0,1,2,3))
 ```
 
-<img src="man/figures/README-example-temp.png"/>
+<img src="man/figures/README-example-sp.png"/>
 
 ## Getting help
 
