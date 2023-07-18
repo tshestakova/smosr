@@ -99,7 +99,7 @@ lon <- c(-10.50, 4.50)
 plot_raster_smos(data = smos_files[13], lat = lat, lon = lon, QA = c(0,1,2,3))
 ```
 
-<img src="man/figures/README-example-temp.png" width="75%" />
+<img src="man/figures/README-example-sp.png" width="75%" />
 
 ## Getting help
 
