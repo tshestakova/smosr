@@ -24,11 +24,12 @@ pass, and NULL - for cases when orbit is irrelevant. Default value is
 as ‘yyyy-mm-dd’ (e.g. ‘2010-06-01’) which specifies the dates to plot the
 data for.}
 
-\item{QA}{a numeric vector specifying the desired quality assurance of the
-data to be plotted. Possible values range from 0 (good quality data) to 15.
-To know the meanings of QA > 0, please refer to the technical note on the
-BEC-SMOS soil moisture products available at
-\url{https://digital.csic.es/handle/10261/303808}.}
+\item{QA}{a numeric vector specifying the desired data quality to be plotted.
+Possible values range from 0 (good quality data) to 15. To know the meanings
+of QA > 0, see Details.}
+}
+\value{
+a line chart
 }
 \description{
 This function plots temporal series of BEC-SMOS soil moisture data
@@ -39,6 +40,33 @@ Note that the data characterized by the same frequency and SMOS orbit can
 be drawn at a time. If the dataset to plot contains a mixture of temporal
 resolution and/or SMOS passes, arguments \code{frequency} and \code{orbit}
 must be specified.
+
+-- Quality assurance (QA) --
+
+QA flags are coded by four significant bits as described below:
+
+\tabular{rcl}{
+\tab -------------- \tab -------------------------------------------------------------------------------- \cr
+\tab Bit position \tab Bit value \cr
+\tab -------------- \tab -------------------------------------------------------------------------------- \cr
+\tab [0] \tab 0 - Brightness temperature not affected by sea-land contamination \cr
+\tab     \tab 1 - Brightness temperature corrected by sea-land contamination \cr
+\tab ------------- \tab -------------------------------------------------------------------------------- \cr
+\tab [1] \tab 0 - Radio Frequency Interference (RFI) not flagged in ESA L1C \cr
+\tab     \tab brightness temperature \cr
+\tab     \tab 1 - RFI flagged in ESA L1C brightness temperature \cr
+\tab ------------- \tab -------------------------------------------------------------------------------- \cr
+\tab [2] \tab 0 - L3 soil moisture with data obtained from L2 retrievals \cr
+\tab     \tab 1 - L3 soil moisture with data obtained from a linear model \cr
+\tab ------------- \tab -------------------------------------------------------------------------------- \cr
+\tab [3] \tab 0 - L4 soil moisture values within the interval [0,1] m^3/m^3 \cr
+\tab     \tab 1 - L4 soil moisture values outside the interval [0,1] m^3/m^3 \cr
+\tab ------------- \tab -------------------------------------------------------------------------------- \cr
+}
+
+In case of the 3-day averaged data, each bit of the quality flag is activated
+if at least one soil moisture estimate during the corresponding time interval
+is affected.
 }
 \examples{
 \dontrun{
@@ -51,4 +79,9 @@ sm_estimates <- extract_smos(data = smos_data, lat = lat, lon = lon)
 plot_temporal_smos(data = sm_estimates, freq = 3, orbit = "d", QA = 0)
 }
 
+}
+\references{
+Pablos M, Gonzalez-Haro C, Portal G, Piles M, Vall-llossera M,
+Portabella M (2022). SMOS L4 Surface Soil Moisture downscaled maps at 1 km
+EASE-2 (reprocessed mode) (V.6.0) [Dataset].
 }

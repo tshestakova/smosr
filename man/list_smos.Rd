@@ -57,10 +57,15 @@ will be listed. A recursive option is also available.
 \dontrun{
 # to list all BEC-SMOS data files stored in the current working directory
 # as well as in the corresponding subfolders
-smos_data <- list_smos(recursive = TRUE)
+smos_files <- list_smos(recursive = TRUE)
 # to list BEC-SMOS data files with the specified frequency and SMOS orbit
 # stored in the specified folder
-smos_data <- list_smos(freq = 3, orbit = "asc", dir = "~/SMOS_data")
+smos_files <- list_smos(freq = 3, orbit = "asc", dir = "~/SMOS_data")
 }
 
+}
+\references{
+Pablos M, Gonzalez-Haro C, Portal G, Piles M, Vall-llossera M,
+Portabella M (2022). SMOS L4 Surface Soil Moisture downscaled maps at 1 km
+EASE-2 (reprocessed mode) (V.6.0) [Dataset].
 }

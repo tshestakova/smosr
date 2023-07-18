@@ -11,17 +11,17 @@ extract_smos(data, lat, lon, save = FALSE, filename = "SM_output.csv")
 links to the data files on the local computer.}
 
 \item{lat}{a numeric vector containing latitudes of points to extract the
-data from (in 'latlon' projection).}
+data from (in ‘latlon’ projection).}
 
 \item{lon}{a numeric vector containing longitudes of points to extract the
-data from (in 'latlon' projection).}
+data from (in ‘latlon’ projection).}
 
 \item{save}{a logical vector indicating whether the output should  be saved
 as a CSV file. Default is \code{FALSE}.}
 
 \item{filename}{a character string naming a file for saving the output. If
 \code{save} = \code{TRUE} and no \code{filename} is specified by the user,
-the data is saved in a file with a generic name 'SM_output.csv'.}
+the data is saved in a file with a generic name ‘SM_output.csv’.}
 }
 \value{
 a data.matrix with the relevant information as described in Details.
@@ -47,10 +47,7 @@ extracted;
 
 - soil moisture estimate (SM);
 
-- quality assurance (QA) corresponding to each SM estimate. Good quality data
-is marked with QA = 0. To know the meanings of QA > 0, please refer to the
-technical note on the BEC-SMOS soil moisture products available at
-\url{https://digital.csic.es/handle/10261/303808}.
+- quality assurance (QA) flag corresponding to each SM estimate.
 
 The output of this function could be saved as a CSV file.
 }
@@ -58,10 +55,15 @@ The output of this function could be saved as a CSV file.
 \dontrun{
 # to iterate over BEC-SMOS data files stored in the current working directory
 # and extract soil moisture estimates for the specified geographical locations
-smos_data <- list_smos()
+smos_files <- list_smos()
 lat <- c(40.42, 41.90, 48.86, 52.50, 59.91)
 lon <- c(-3.70, 12.50, 2.35, 13.40, 10.75)
-sm_estimates <- extract_smos(data = smos_data, lat = lat, lon = lon)
+sm_estimates <- extract_smos(data = smos_files, lat = lat, lon = lon)
 }
 
+}
+\references{
+Pablos M, Gonzalez-Haro C, Portal G, Piles M, Vall-llossera M,
+Portabella M (2022). SMOS L4 Surface Soil Moisture downscaled maps at 1 km
+EASE-2 (reprocessed mode) (V.6.0) [Dataset].
 }

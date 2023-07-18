@@ -8,15 +8,15 @@
 #' and \code{\link[=download_smos]{download_smos()}}.
 #'
 #' If you do not have your BEC login details yet, please register on
-#' \url{https://bec.icm.csic.es/bec-ftp-service-registration}.
+#' https://bec.icm.csic.es/bec-ftp-service-registration/.
 #'
 #' @param username a character string containing BEC server username.
 #'
 #' @param password a character string containing BEC server password.
 #'
-#' @return The function returns a character string with the inputs pasted
-#' together in the format required by \code{\link[=find_smos]{find_smos()}}
-#' and \code{\link[=download_smos]{download_smos()}}.
+#' @return a character string with the inputs pasted together in the format
+#' required by \code{\link[=find_smos]{find_smos()}} and
+#' \code{\link[=download_smos]{download_smos()}}.
 #'
 #' @examples
 #' \dontrun{

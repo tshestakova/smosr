@@ -6,6 +6,10 @@
 #' \code{\link[=find_smos]{find_smos()}}, but displayed only if requested by the
 #' user.
 #'
+#' @references Pablos M, Gonzalez-Haro C, Portal G, Piles M, Vall-llossera M,
+#' Portabella M (2022). SMOS L4 Surface Soil Moisture downscaled maps at 1 km
+#' EASE-2 (reprocessed mode) (V.6.0) [Dataset].
+#'
 #' @return a character string containing dates for which the data files were not
 #' found on the server.
 #'

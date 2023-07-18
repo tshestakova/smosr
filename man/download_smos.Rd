@@ -14,6 +14,9 @@ external links to the data files on the BEC server.}
 to save the data. Default value is \code{NULL} which means the dataset is
 stored in the current working directory.}
 }
+\value{
+downloaded files in the specified directory
+}
 \description{
 This function automates downloading of original BEC-SMOS soil moisture data
 to a local computer via a secure FTP (SFTP) server.
@@ -24,11 +27,9 @@ format ("as is") from the BEC server. The data files are stored on the local
 computer in the current working directory (default option) if no otherwise
 specified by a user.
 
-Note that this function requires a username and a password to access the BEC
-server. Pass your credentials in using the
-\code{\link[=set_credentials]{set_credentials()}} function. Otherwise, if you
-do not have your BEC login details yet, please register on
-\url{https://bec.icm.csic.es/bec-ftp-service-registration}.
+Note that the registration as a user on the Barcelona Expert Center (BEC)
+webpage is required to access the server. See
+\code{\link[=set_credentials]{set_credentials()}} for details.
 }
 \examples{
 \dontrun{
@@ -45,4 +46,9 @@ dir.create("~/SMOS_data")
 download_smos(data = smos_data[1:5], dir = "~/SMOS_data")
 }
 
+}
+\references{
+Pablos M, Gonzalez-Haro C, Portal G, Piles M, Vall-llossera M,
+Portabella M (2022). SMOS L4 Surface Soil Moisture downscaled maps at 1 km
+EASE-2 (reprocessed mode) (V.6.0) [Dataset].
 }

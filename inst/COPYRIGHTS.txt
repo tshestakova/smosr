@@ -1,8 +1,8 @@
-This package is provided you under the terms of the GNU General Public 
+This package is provided you under the terms of the GNU General Public
 License version 3.
 
-Included below is license and copyright information for externally 
-maintained libraries used by smosr. All other code in smosr is 
+Included below is license and copyright information for externally
+maintained libraries used by smosr. All other code in smosr is
 copyright RStudio, Inc.
 
 ====
@@ -80,13 +80,13 @@ fields and lubridate are licensed for use as follows
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public 
- * License along with this program; if not, write to the Free Software 
+ * You should have received a copy of the GNU General Public
+ * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110 USA
  */
 
 ====
-ncdf4, raster, and terra are licensed for use as follows
+ncdf4 and terra are licensed for use as follows
 
 /*
  * This program is free software: you can redistribute it and/or modify
@@ -104,7 +104,7 @@ ncdf4, raster, and terra are licensed for use as follows
  */
 
 ====
--utils is licensed for use as follows
+utils is licensed for use as follows
 
 /*
  * This library is free software; you can redistribute it and/or
@@ -117,8 +117,8 @@ ncdf4, raster, and terra are licensed for use as follows
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public 
- * License along with this library; if not, write to the Free Software 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110 USA
  */
 

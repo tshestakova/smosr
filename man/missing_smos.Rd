@@ -23,3 +23,8 @@ missing_smos()
 }
 
 }
+\references{
+Pablos M, Gonzalez-Haro C, Portal G, Piles M, Vall-llossera M,
+Portabella M (2022). SMOS L4 Surface Soil Moisture downscaled maps at 1 km
+EASE-2 (reprocessed mode) (V.6.0) [Dataset].
+}

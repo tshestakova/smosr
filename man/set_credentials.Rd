@@ -12,9 +12,9 @@ set_credentials(username, password)
 \item{password}{a character string containing BEC server password.}
 }
 \value{
-The function returns a character string with the inputs pasted
-together in the format required by \code{\link[=find_smos]{find_smos()}}
-and \code{\link[=download_smos]{download_smos()}}.
+a character string with the inputs pasted together in the format
+required by \code{\link[=find_smos]{find_smos()}} and
+\code{\link[=download_smos]{download_smos()}}.
 }
 \description{
 To use some functionalities of \code{smosr} package (e.g. access the server
@@ -26,7 +26,7 @@ and \code{\link[=download_smos]{download_smos()}}.
 }
 \details{
 If you do not have your BEC login details yet, please register on
-\url{https://bec.icm.csic.es/bec-ftp-service-registration}.
+https://bec.icm.csic.es/bec-ftp-service-registration/.
 }
 \examples{
 \dontrun{

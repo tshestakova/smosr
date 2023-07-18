@@ -4,28 +4,26 @@ Title: A Suite of Tools to Access, Download and Explore ESA-BEC Soil Moisture an
 Version: 1.0.0
 Date: 2023-07-13
 Authors@R: 
-    c(person(given = "Tatiana A.", 
-    family = "Shestakova", 
-    role = c("aut", "cre"),
-    email = "tasha.work24@gmail.com"),
-    comment = c(ORCID = "0000-0002-5605-0299"))
-Author: Tatiana A. Shestakova [aut, cre] (https://orcid.org/0000-0002-5605-0299)
+    c(person(given = "Tatiana A.",
+             family = "Shestakova",
+             role = c("aut", "cre", "cph"),
+             email = "tasha.work24@gmail.com",
+             comment = c(ORCID = "0000-0002-5605-0299")))
+Author: Tatiana A. Shestakova [aut, cre, cph] (<https://orcid.org/0000-0002-5605-0299>)
 Maintainer: Tatiana A. Shestakova <tasha.work24@gmail.com>
 Description: Provides functions that automate accessing, downloading and importing ESA-BEC
     Soil Moisture and Ocean Salinity (SMOS) data into R. Particularly, it includes functions to 
     search for, acquire, extract, and plot BEC-SMOS L4 soil moisture data downscaled to ~1 km 
     spatial resolution (EASE-grid v.2).
-URL: https://github.com/tshestakova/smosr
 License: GPL-3
-Encoding: UTF-8
+URL: https://github.com/tshestakova/smosr
+BugReports: https://github.com/tshestakova/smosr/issues
 Depends: R (>= 4.0.0)
+Imports:
+    fields, graphics, grDevices, lubridate, methods, ncdf4, RCurl, terra, tidyr, utils
+Suggests: 
+    knitr, rmarkdown, testthat (>= 3.0.0)
+Encoding: UTF-8
 LazyData: TRUE
 RoxygenNote: 7.2.3
-Imports:
-    fields, graphics, grDevices, lubridate, methods, ncdf4, raster, RCurl, terra, tidyr, utils
-Suggests: 
-    knitr, rmarkdown, sf, testthat (>= 3.0.0)
-VignetteBuilder: knitr
-Config/testthat/edition: 3
 NeedsCompilation: no
-BugReports: https://github.com/tshestakova/smosr/issues

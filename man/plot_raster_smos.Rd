@@ -11,18 +11,19 @@ plot_raster_smos(data, lat = NULL, lon = NULL, QA = NULL)
 file stored on the local computer.}
 
 \item{lat}{a numeric vector of length 2 containing latitudinal bounds of
-the plotting region (in 'latlon' projection). Default value is \code{NULL}
+the plotting region (in ‘latlon’ projection). Default value is \code{NULL}
 which means all data between min and max latitudes are drawn.}
 
 \item{lon}{a numeric vector of length 2 containing longitudinal bounds of
-the plotting region (in 'latlon' projection). Default value is \code{NULL}
+the plotting region (in ‘latlon’ projection). Default value is \code{NULL}
 which means all data between min and max longitudes are drawn.}
 
-\item{QA}{a numeric vector specifying the desired quality assurance of the
-data to be drawn. Possible values range from 0 (good quality data) to 15.
-To know the meanings of QA > 0, please refer to the technical note on the
-BEC-SMOS soil moisture products available at
-\url{https://digital.csic.es/handle/10261/303808}.}
+\item{QA}{a numeric vector specifying the desired data quality to be plotted.
+Possible values range from 0 (good quality data) to 15. To know the meanings
+of QA > 0, see Details.}
+}
+\value{
+a raster image
 }
 \description{
 This function draws a raster image of BEC-SMOS soil moisture data
@@ -31,22 +32,53 @@ corresponding to a single data file and specific geographical extent.
 \details{
 This function reads an original BEC-SMOS soil moisture data file in NetCDF
 format, converts data from EASE-2 grid cells to geographic coordinates, and
-draws a raster image of soil moisture estimates in 'latlon' projection. The
+draws a raster image of soil moisture estimates in ‘latlon’ projection. The
 image can be drawn for a specific geographical extent if requested by the
 user. Otherwise, the entire dataset across Europe (between 28 and 72 degrees
- north and -11 and 40 degrees east) will be plotted.
+north and -11 and 40 degrees east) will be plotted. Note that due to high
+resolution of the data (~1 km), the execution of this function may take a
+long time to be completed depending on the amount of data to be drawn.
 
-Note that due to high resolution of the data (~1 km), the execution of this
-function may take a long time to be completed depending on the amount of
-data to be drawn.
+-- Quality assurance (QA) --
+
+QA flags are coded by four significant bits as described below:
+
+\tabular{rcl}{
+\tab -------------- \tab -------------------------------------------------------------------------------- \cr
+\tab Bit position \tab Bit value \cr
+\tab -------------- \tab -------------------------------------------------------------------------------- \cr
+\tab [0] \tab 0 - Brightness temperature not affected by sea-land contamination \cr
+\tab     \tab 1 - Brightness temperature corrected by sea-land contamination \cr
+\tab ------------- \tab -------------------------------------------------------------------------------- \cr
+\tab [1] \tab 0 - Radio Frequency Interference (RFI) not flagged in ESA L1C \cr
+\tab     \tab brightness temperature \cr
+\tab     \tab 1 - RFI flagged in ESA L1C brightness temperature \cr
+\tab ------------- \tab -------------------------------------------------------------------------------- \cr
+\tab [2] \tab 0 - L3 soil moisture with data obtained from L2 retrievals \cr
+\tab     \tab 1 - L3 soil moisture with data obtained from a linear model \cr
+\tab ------------- \tab -------------------------------------------------------------------------------- \cr
+\tab [3] \tab 0 - L4 soil moisture values within the interval [0,1] m^3/m^3 \cr
+\tab     \tab 1 - L4 soil moisture values outside the interval [0,1] m^3/m^3 \cr
+\tab ------------- \tab -------------------------------------------------------------------------------- \cr
+}
+
+In case of the 3-day averaged data, each bit of the quality flag is activated
+if at least one soil moisture estimate during the corresponding time interval
+is affected.
 }
 \examples{
 \dontrun{
-# to draw a raster image of soil moisture data within specified bounds
-smos_data <- list_smos()
+# to draw a raster image of soil moisture data within the specified
+# geographical bounds
+smos_files <- list_smos()
 lat <- c(35.00, 45.00)
 lon <- c(-10.50, 4.50)
-plot_raster_smos(data = smos_data[1], lat = lat, lon = lon)
+plot_raster_smos(data = smos_files[1], lat = lat, lon = lon)
 }
 
+}
+\references{
+Pablos M, Gonzalez-Haro C, Portal G, Piles M, Vall-llossera M,
+Portabella M (2022). SMOS L4 Surface Soil Moisture downscaled maps at 1 km
+EASE-2 (reprocessed mode) (V.6.0) [Dataset].
 }

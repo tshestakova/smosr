@@ -45,15 +45,13 @@ end of 2022. The currently supported version is 6.0. For more details about
 the BEC-SMOS soil moisture products, see the technical note available at
 \url{https://digital.csic.es/handle/10261/303808}.
 
-Note that this function requires a username and a password to access the BEC
-server. Pass your credentials in using the
-\code{\link[=set_credentials]{set_credentials()}} function. Otherwise, if you
-do not have your BEC login details yet, please register on
-\url{https://bec.icm.csic.es/bec-ftp-service-registration}.
+Note that the registration as a user on the Barcelona Expert Center (BEC)
+webpage is required to access the server. See
+\code{\link[=set_credentials]{set_credentials()}} for details.
 }
 \examples{
 \dontrun{
-# to look for SMOS data on a specific date
+# to look for BEC-SMOS data on a specific date
 smos_data <- find_smos(freq = 1, orbit = "a", dates = "2022-12-31")
 # to search over a date range
 start_date <- as.Date("2022-01-01")
@@ -62,4 +60,9 @@ date_range <- seq(start_date, end_date, by = 10)
 smos_data <- find_smos(freq = 3, orbit = "descending", dates = date_range)
 }
 
+}
+\references{
+Pablos M, Gonzalez-Haro C, Portal G, Piles M, Vall-llossera M,
+Portabella M (2022). SMOS L4 Surface Soil Moisture downscaled maps at 1 km
+EASE-2 (reprocessed mode) (V.6.0) [Dataset].
 }
