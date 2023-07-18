@@ -46,8 +46,8 @@ devtools::install_github("tshestakova/smosr")
 ```{r}
 library(smosr)
 
-## to set credentials for accessing BEC server
-## note that "username" and "password" should be replaced with your login details 
+# # to set credentials for accessing BEC server
+# # note that "username" and "password" should be replaced with your login details 
 # set_credentials("username", "password")
 
 # to search for SMOS data with the specified parameters available on the server
