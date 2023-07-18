@@ -110,9 +110,3 @@ reproducible example on
 For questions and other discussion, please use [Stack
 Overflow](https://stackoverflow.com/questions/) and the [RStudio
 community](https://community.rstudio.com/).
-
-## Code of Conduct
-
-Please note that the smosr project is released with a Contributor Code
-of Conduct. By contributing to this project, you agree to abide by its
-terms.
