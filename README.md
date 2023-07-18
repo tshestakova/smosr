@@ -1,13 +1,16 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- badges: start -->
 
 [![R-CMD-check](https://github.com/tshestakova/smosr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tshestakova/smosr/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 # smosr
 
 ## Overview
 
-The goal of smosr is to automate accessing, downloading and importing
-ESA-BEC Soil Moisture and Ocean Salinity (SMOS) data into R.
+The goal of `smosr` package is to automate accessing, downloading and
+exploring ESA-BEC Soil Moisture and Ocean Salinity (SMOS) data into R.
 Particularly, it includes functions to search for, acquire, extract, and
 plot BEC-SMOS L4 soil moisture data downscaled to ~1 km spatial
 resolution (EASE-grid v.2).
@@ -18,13 +21,12 @@ Install the released version of `smosr` from
 [CRAN](https://cran.r-project.org/):
 
 ``` r
-# The easiest way to get dplyr is to install the whole tidyverse:
 install.packages("smosr")
 ```
 
 ### Development version
 
-To get a bug fix or to use new features of the package, you can install
+To get a bug fix or to use the newest features of the package, install
 the development version of `smosr` from [GitHub](https://github.com/):
 
 ``` r
@@ -38,7 +40,7 @@ devtools::install_github("tshestakova/smosr")
 library(smosr)
 
 # # to set credentials for accessing BEC server
-# # note that "username" and "password" should be replaced with your login details
+# # note that "username" and "password" should be replaced with your login details 
 # set_credentials("username", "password")
 
 # to search for SMOS data with the specified parameters available on the server
@@ -50,8 +52,6 @@ smos_data <- find_smos(freq = 3, orbit = "des", dates = date_range)
 
 # to download the data from the server to a local computer
 dir.create("~/sm_example")
-#> Warning in dir.create("~/sm_example"):
-#> 'C:\Users\tshestakova\Documents\sm_example' already exists
 download_smos(data = smos_data, dir = "~/sm_example")
 #> |================================================================================| 100%
 
@@ -90,7 +90,7 @@ head(sm_estimates, 12)
 plot_temporal_smos(data = sm_estimates)
 ```
 
-<img src="man/figures/README-example-temp.png" width="75%" />
+<img src="man/figures/README-example-temp.png"/>
 
 ``` r
 # to draw a raster image of soil moisture estimates from a file with
@@ -100,7 +100,7 @@ lon <- c(-10.50, 4.50)
 plot_raster_smos(data = smos_files[13], lat = lat, lon = lon, QA = c(0,1,2,3))
 ```
 
-<img src="man/figures/README-example-sp.png" width="75%" />
+<img src="man/figures/README-example-temp.png"/>
 
 ## Getting help
 

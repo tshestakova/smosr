@@ -133,8 +133,11 @@ plot_temporal_smos <- function(data, freq = NULL, orbit = NULL,
   }
   smos_lat <- as.numeric(data[,1])
   smos_lon <- as.numeric(data[,2])
+  smos_freq <- as.character(data[,3])
+  smos_orbit <- as.character(data[,4])
   smos_coords <- paste0(format(round(smos_lat, 3), nsmall = 3), ", ",
-                        format(round(smos_lon, 3), nsmall = 3))
+                        format(round(smos_lon, 3), nsmall = 3), "/",
+                        smos_freq, smos_orbit)
   poi_count <- length(unique(smos_coords))
   smos_dates <- as.Date(data[,5], "%Y-%m-%d")
   smos_sm <- as.numeric(data[,7])
@@ -168,7 +171,7 @@ plot_temporal_smos <- function(data, freq = NULL, orbit = NULL,
   if(orbit == "A") {
     subtitle <- paste(c("Ascending pass ( QA =", QA, ")"), collapse = " ")
   } else subtitle <- paste(c("Descending pass ( QA =", QA, ")"), collapse = " ")
-  smos_legend <- colnames(smos_plot[c(-1)])
+  smos_legend <- gsub('.{4}$', '', colnames(smos_plot[c(-1)]))
   poi_count <- ncol(smos_plot) - 1
   if(poi_count == 0)
     stop(simpleError(paste("No data to plot. Modify the plotting",

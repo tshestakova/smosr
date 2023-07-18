@@ -4,8 +4,12 @@
 * devtools::check_win_devel()
 * devtools::check_win_release()
 * devtools::check_win_oldrelease()
-* devtools::use_travis()          ###ubuntu 14.04.5 LTS (on travis-ci), R 3.5.0
-* devtools::check_mac_release()
+* usethis::use_github_action() 
+  - macOS-latest, R release
+  - windows-latest, R release
+  - ubuntu-latest, R devel
+  - ubuntu-latest, R release
+  - ubuntu-latest, R oldrel-1
 * rhub::check_for_cran()
   - Fedora Linux, R-devel, clang, gfortran
   - Ubuntu Linux 20.04.1 LTS, R-release, GCC
