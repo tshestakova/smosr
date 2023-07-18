@@ -7,6 +7,8 @@
 
 # smosr
 
+Acquire and Explore BEC-SMOS L4 Soil Moisture Data in R
+
 ## Overview
 
 The goal of `smosr` is to automate accessing, downloading and exploring ESA-BEC 
