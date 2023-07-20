@@ -2,7 +2,7 @@
 % Please edit documentation in R/find_smos.R
 \name{find_smos}
 \alias{find_smos}
-\title{Find BEC-SMOS soil moisture data in Barcelona Expert Center (BEC) server}
+\title{Find BEC-SMOS soil moisture data on the server}
 \usage{
 find_smos(freq, orbit, dates)
 }
@@ -35,14 +35,14 @@ the user.
 \details{
 BEC-SMOS soil moisture (SM) data is a regional root zone SM product that
 covers Europe and Mediterranean countries. Particularly, \code{smosr} package
-works with the reprocessed level-4 (L4) SM estimates downscaled to ~1 km
+works with the reprocessed SMOS Level 4 (L4) SM estimates downscaled to ~1 km
 spatial resolution (EASE-grid v.2). The data is computed for two time periods
 (argument \code{frequency}): daily and 3-day moving averages produced by a
 temporal aggregation of the daily products. Note that SMOS ascending and
-descending passes (argument \code{orbit}) are processed separately. The
-BEC-SMOS SM product is available starting from June 1st, 2010 throughout the
-end of 2022. The currently supported version is 6.0. For more details about
-the BEC-SMOS soil moisture products, see the technical note available at
+descending passes (argument \code{orbit}) are processed separately. The data
+is available starting from June 1st, 2010 throughout the end of 2022. The
+currently supported version is 6.0. For more details about the BEC-SMOS SM
+products, see the technical note available at
 \url{https://digital.csic.es/handle/10261/303808}.
 
 Note that the registration as a user on the Barcelona Expert Center (BEC)
@@ -53,7 +53,7 @@ webpage is required to access the server. See
 \dontrun{
 # to look for BEC-SMOS data on a specific date
 smos_data <- find_smos(freq = 1, orbit = "a", dates = "2022-12-31")
-# to search over a date range
+# to search data over a date range
 start_date <- as.Date("2022-01-01")
 end_date <- as.Date("2022-12-31")
 date_range <- seq(start_date, end_date, by = 10)

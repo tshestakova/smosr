@@ -1,12 +1,12 @@
 #' Download BEC-SMOS soil moisture data
 #'
-#' This function automates downloading of original BEC-SMOS soil moisture data
-#' to a local computer via a secure FTP (SFTP) server.
+#' This function automates downloading of BEC-SMOS soil moisture data to a local
+#' computer via a secure FTP (SFTP) server.
 #'
 #' This function downloads the original BEC-SMOS soil moisture data in NetCDF
-#' format ("as is") from the BEC server. The data files are stored on the local
-#' computer in the current working directory (default option) if no otherwise
-#' specified by a user.
+#' format ("as is") via a secure FTP (SFTP) server. The data files are stored on
+#' the local computer in a temporary directory of the current R session (default
+#' option) if no otherwise specified by the user.
 #'
 #' Note that the registration as a user on the Barcelona Expert Center (BEC)
 #' webpage is required to access the server. See
@@ -20,24 +20,19 @@
 #' external links to the data files on the BEC server.
 #'
 #' @param dir a character string specifying a path to a local directory in which
-#' to save the data. Default value is \code{NULL} which means the dataset is
-#' stored in the current working directory.
+#' to save the data. Default value is \code{NULL} meaning that the dataset is
+#' stored in a temporary directory of the current R session.
 #'
 #' @return downloaded files in the specified directory
 #'
 #' @examples
 #' \dontrun{
-#' # to download all files found with find_smos()
-#' # into the current working directory
+#' # to download files found with find_smos() into a temporary directory of the current R session
 #' start_date <- as.Date("2022-01-01")
 #' end_date <- as.Date("2022-12-31")
 #' date_range <- seq(start_date, end_date, by = 30)
-#' smos_data <- find_smos(freq = 3, orbit = "descending", dates = date_range)
+#' smos_data <- find_smos(freq = 3, orbit = "des", dates = date_range)
 #' download_smos(smos_data)
-#' # to download first five items from the complete list of files
-#' # and place them in a newly created directory
-#' dir.create("~/SMOS_data")
-#' download_smos(data = smos_data[1:5], dir = "~/SMOS_data")
 #' }
 #'
 #' @importFrom RCurl getBinaryURL
@@ -47,20 +42,25 @@
 #' @export
 
 download_smos <- function(data, dir = NULL) {
-  if(!is.null(dir)) {
-    old_dir <- getwd()
-    setwd(dir)
-  }
+  if(is.null(dir)) dir <- tempdir()
+  if(!file.exists(dir))
+    stop(simpleError(paste("Specified directory does not exist. Provide a",
+                           "valid path to an existing folder or create a new",
+                           "one to proceed.")))
+  # old_dir <- getwd()
+  # on.exit(setwd(old_dir))
+  # setwd(dir)
   userpwd <- Sys.getenv("userpass")
   file_count <- length(data)
   progress_bar <- utils::txtProgressBar(min = 0, max = file_count, initial = 0,
-                                 width = 80, style = 3)
+                                        width = 80, style = 3)
   for(i in 1:file_count) {
     file_name <- sub(".*/([0-9:]{4})/", "", data[i])
+    file_path <- paste0(dir, "/", file_name)
     file_url <- RCurl::getBinaryURL(data[i], userpwd = userpwd)
-    writeBin(file_url, file_name)
+    # writeBin(file_url, file_name)
+    writeBin(file_url, file_path)
     utils::setTxtProgressBar(progress_bar, i)
   }
   close(progress_bar)
-  if(!is.null(dir)) setwd(old_dir)
 }

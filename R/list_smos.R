@@ -1,14 +1,14 @@
-#' List the BEC-SMOS data files stored on a local computer
+#' List BEC-SMOS data files stored on a local computer
 #'
 #' This function returns a list of the BEC-SMOS data files previously stored on
 #' a local computer.
 #'
-#' This function iterates over all files in the current working directory
-#' (default option) or another local folder as indicated by \code{dir} argument
-#' and returns a list of the BEC-SMOS data files with the \code{frequency},
-#' \code{orbit}, and \code{dates} specified by the user. If no arguments are
-#' provided, all BEC-SMOS soil moisture data files found in the selected folder
-#' will be listed. A recursive option is also available.
+#' This function iterates over all files in a temporary directory of the
+#' current R session (default option) or another local folder as indicated by
+#' \code{dir} argument and returns a list of the BEC-SMOS data files with the
+#' \code{frequency}, \code{orbit}, and \code{dates} specified by the user. If
+#' no arguments are provided, all BEC-SMOS soil moisture data files found in
+#' the selected folder will be listed. A recursive option is also available.
 #'
 #' @references Pablos M, Gonzalez-Haro C, Portal G, Piles M, Vall-llossera M,
 #' Portabella M (2022). SMOS L4 Surface Soil Moisture downscaled maps at 1 km
@@ -32,8 +32,8 @@
 #' produced by \code{seq.Date}).
 #'
 #' @param dir a character string specifying a path to a local directory in which
-#' to search for the data. Default value is \code{NULL} which means the dataset
-#' is looked up in the current working directory.
+#' to search the data for. Default value is \code{NULL} meaning that the dataset
+#' is looked up in a temporary directory of the current R session.
 #'
 #' @param recursive a logical vector indicating whether the listing should
 #' recurse into directories. Default is \code{FALSE}.
@@ -43,12 +43,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' # to list all BEC-SMOS data files stored in the current working directory
-#' # as well as in the corresponding subfolders
-#' smos_files <- list_smos(recursive = TRUE)
 #' # to list BEC-SMOS data files with the specified frequency and SMOS orbit
-#' # stored in the specified folder
-#' smos_files <- list_smos(freq = 3, orbit = "asc", dir = "~/SMOS_data")
+#' # stored in a temporary directory of the current R session
+#' smos_files <- list_smos(freq = 3, orbit = "des")
 #' }
 #'
 #' @importFrom methods is
@@ -57,7 +54,11 @@
 
 list_smos <- function(freq = NULL, orbit = NULL, dates = NULL, dir = NULL,
                       recursive = FALSE) {
-  if(is.null(dir)) dir <- getwd()
+  if(is.null(dir)) dir <- tempdir()
+  if(!file.exists(dir))
+    stop(simpleError(paste("Specified directory does not exist. Provide a",
+                           "valid path to an existing folder or create a new",
+                           "one to proceed.")))
   all_files <- list.files(dir, pattern = ".*(BEC.?SM.*[AD].*[13]d.*.nc).*",
                           full.names = TRUE, recursive = recursive)
   if(is.null(dates)) {

@@ -2,7 +2,7 @@
 % Please edit documentation in R/missing_smos.R
 \name{missing_smos}
 \alias{missing_smos}
-\title{Print the dates for which BEC-SMOS soil moisture data have not been found}
+\title{Print the dates for which BEC-SMOS soil moisture data were not found}
 \usage{
 missing_smos()
 }
@@ -12,8 +12,8 @@ found on the server.
 }
 \description{
 This function prints out the dates for which BEC-SMOS soil moisture data with
-specified \code{frequency} and \code{orbit} arguments have not been found on
-the BEC server. This information is automatically generated while running
+specified \code{frequency} and \code{orbit} arguments were not  found on the
+BEC server. This information is automatically generated while running
 \code{\link[=find_smos]{find_smos()}}, but displayed only if requested by the
 user.
 }

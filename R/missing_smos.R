@@ -1,8 +1,8 @@
-#' Print the dates for which BEC-SMOS soil moisture data have not been found
+#' Print the dates for which BEC-SMOS soil moisture data were not found
 #'
 #' This function prints out the dates for which BEC-SMOS soil moisture data with
-#' specified \code{frequency} and \code{orbit} arguments have not been found on
-#' the BEC server. This information is automatically generated while running
+#' specified \code{frequency} and \code{orbit} arguments were not  found on the
+#' BEC server. This information is automatically generated while running
 #' \code{\link[=find_smos]{find_smos()}}, but displayed only if requested by the
 #' user.
 #'

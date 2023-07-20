@@ -2,7 +2,7 @@
 % Please edit documentation in R/list_smos.R
 \name{list_smos}
 \alias{list_smos}
-\title{List the BEC-SMOS data files stored on a local computer}
+\title{List BEC-SMOS data files stored on a local computer}
 \usage{
 list_smos(
   freq = NULL,
@@ -31,8 +31,8 @@ multiple-element object of class Date or a vector should be passed (e.g. as
 produced by \code{seq.Date}).}
 
 \item{dir}{a character string specifying a path to a local directory in which
-to search for the data. Default value is \code{NULL} which means the dataset
-is looked up in the current working directory.}
+to search the data for. Default value is \code{NULL} meaning that the dataset
+is looked up in a temporary directory of the current R session.}
 
 \item{recursive}{a logical vector indicating whether the listing should
 recurse into directories. Default is \code{FALSE}.}
@@ -46,21 +46,18 @@ This function returns a list of the BEC-SMOS data files previously stored on
 a local computer.
 }
 \details{
-This function iterates over all files in the current working directory
-(default option) or another local folder as indicated by \code{dir} argument
-and returns a list of the BEC-SMOS data files with the \code{frequency},
-\code{orbit}, and \code{dates} specified by the user. If no arguments are
-provided, all BEC-SMOS soil moisture data files found in the selected folder
-will be listed. A recursive option is also available.
+This function iterates over all files in a temporary directory of the
+current R session (default option) or another local folder as indicated by
+\code{dir} argument and returns a list of the BEC-SMOS data files with the
+\code{frequency}, \code{orbit}, and \code{dates} specified by the user. If
+no arguments are provided, all BEC-SMOS soil moisture data files found in
+the selected folder will be listed. A recursive option is also available.
 }
 \examples{
 \dontrun{
-# to list all BEC-SMOS data files stored in the current working directory
-# as well as in the corresponding subfolders
-smos_files <- list_smos(recursive = TRUE)
 # to list BEC-SMOS data files with the specified frequency and SMOS orbit
-# stored in the specified folder
-smos_files <- list_smos(freq = 3, orbit = "asc", dir = "~/SMOS_data")
+# stored in a temporary directory of the current R session
+smos_files <- list_smos(freq = 3, orbit = "des")
 }
 
 }

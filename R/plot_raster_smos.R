@@ -12,7 +12,7 @@
 #' resolution of the data (~1 km), the execution of this function may take a
 #' long time to be completed depending on the amount of data to be drawn.
 #'
-#' -- Quality assurance (QA) --
+#' **** Quality assurance (QA) ****
 #'
 #' QA flags are coded by four significant bits as described below:
 #'
@@ -48,22 +48,22 @@
 #'
 #' @param lat a numeric vector of length 2 containing latitudinal bounds of
 #' the plotting region (in ‘latlon’ projection). Default value is \code{NULL}
-#' which means all data between min and max latitudes are drawn.
+#' meaning that all data between min and max latitudes are drawn.
 #'
 #' @param lon a numeric vector of length 2 containing longitudinal bounds of
 #' the plotting region (in ‘latlon’ projection). Default value is \code{NULL}
-#' which means all data between min and max longitudes are drawn.
+#' meaning that all data between min and max longitudes are drawn.
 #'
 #' @param QA a numeric vector specifying the desired data quality to be plotted.
 #' Possible values range from 0 (good quality data) to 15. To know the meanings
-#' of QA > 0, see Details.
+#' of QA flags, see Details.
 #'
 #' @return a raster image
 #'
 #' @examples
 #' \dontrun{
-#' # to draw a raster image of soil moisture data within the specified
-#' # geographical bounds
+#' # to draw a raster image of soil moisture data corresponding to the first BEC-SMOS file
+#' # from a list produced by list_smos() and within the specified geographical bounds#'
 #' smos_files <- list_smos()
 #' lat <- c(35.00, 45.00)
 #' lon <- c(-10.50, 4.50)
@@ -163,6 +163,7 @@ plot_raster_smos <- function(data, lat = NULL, lon = NULL, QA = NULL) {
   } else subtitle <- paste(c(as.character(nc_date), "/ Descending pass ( QA =",
                              QA, ")"), collapse = " ")
   old_parms <- graphics::par(no.readonly = TRUE)
+  on.exit(par(old_parms))
   while(!is.null(grDevices::dev.list())) grDevices::dev.off()
   legend_title <- expression("Soil moisture (" * m^3 / m^3 * ")")
   sm_min <- round(min(nc_sm, na.rm = TRUE) - 0.05, 1)
@@ -179,5 +180,4 @@ plot_raster_smos <- function(data, lat = NULL, lon = NULL, QA = NULL) {
   graphics::box()
   graphics::mtext(text = subtitle, side = 3, line = 0.35, cex = 1.0)
   terra::lines(smos_coastline, col = "black")
-  graphics::par(old_parms)
 }

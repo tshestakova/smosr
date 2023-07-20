@@ -12,15 +12,15 @@ file stored on the local computer.}
 
 \item{lat}{a numeric vector of length 2 containing latitudinal bounds of
 the plotting region (in ‘latlon’ projection). Default value is \code{NULL}
-which means all data between min and max latitudes are drawn.}
+meaning that all data between min and max latitudes are drawn.}
 
 \item{lon}{a numeric vector of length 2 containing longitudinal bounds of
 the plotting region (in ‘latlon’ projection). Default value is \code{NULL}
-which means all data between min and max longitudes are drawn.}
+meaning that all data between min and max longitudes are drawn.}
 
 \item{QA}{a numeric vector specifying the desired data quality to be plotted.
 Possible values range from 0 (good quality data) to 15. To know the meanings
-of QA > 0, see Details.}
+of QA flags, see Details.}
 }
 \value{
 a raster image
@@ -39,7 +39,7 @@ north and -11 and 40 degrees east) will be plotted. Note that due to high
 resolution of the data (~1 km), the execution of this function may take a
 long time to be completed depending on the amount of data to be drawn.
 
--- Quality assurance (QA) --
+**** Quality assurance (QA) ****
 
 QA flags are coded by four significant bits as described below:
 
@@ -68,8 +68,8 @@ is affected.
 }
 \examples{
 \dontrun{
-# to draw a raster image of soil moisture data within the specified
-# geographical bounds
+# to draw a raster image of soil moisture data corresponding to the first BEC-SMOS file
+# from a list produced by list_smos() and within the specified geographical bounds#'
 smos_files <- list_smos()
 lat <- c(35.00, 45.00)
 lon <- c(-10.50, 4.50)

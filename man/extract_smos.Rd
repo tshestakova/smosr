@@ -4,30 +4,41 @@
 \alias{extract_smos}
 \title{Extract BEC-SMOS soil moisture estimates for specific geographical locations}
 \usage{
-extract_smos(data, lat, lon, save = FALSE, filename = "SM_output.csv")
+extract_smos(
+  data,
+  lat,
+  lon,
+  save = FALSE,
+  dir = NULL,
+  filename = "smosr_output.csv"
+)
 }
 \arguments{
 \item{data}{a character vector as produced by \code{list_smos()} containing
 links to the data files on the local computer.}
 
-\item{lat}{a numeric vector containing latitudes of points to extract the
-data from (in ‘latlon’ projection).}
+\item{lat}{a numeric vector containing latitudes of geographical locations to
+extract the data from (in ‘latlon’ projection).}
 
-\item{lon}{a numeric vector containing longitudes of points to extract the
-data from (in ‘latlon’ projection).}
+\item{lon}{a numeric vector containing longitudes of geographical locations
+to extract the data from (in ‘latlon’ projection).}
 
-\item{save}{a logical vector indicating whether the output should  be saved
-as a CSV file. Default is \code{FALSE}.}
+\item{save}{a logical vector indicating whether the output should be saved as
+a CSV file. Default is \code{FALSE}.}
 
-\item{filename}{a character string naming a file for saving the output. If
-\code{save} = \code{TRUE} and no \code{filename} is specified by the user,
-the data is saved in a file with a generic name ‘SM_output.csv’.}
+\item{dir}{a character string specifying a path to a local directory in which
+to save the CSV file with the output. Default value is \code{NULL} meaning
+that the file is stored in a temporary directory of the current R session.}
+
+\item{filename}{a character string naming the CSV file for saving the output.
+If \code{save} = \code{TRUE} and no \code{filename} is specified by the user,
+the data is saved in a file with a generic name ‘smosr_output.csv’.}
 }
 \value{
 a data.matrix with the relevant information as described in Details.
 }
 \description{
-This function facilitates reading the original BEC-SMOS soil moisture data
+This function facilitates reading of the original BEC-SMOS soil moisture data
 files and extracting relevant information for specific geographical locations
 by using Lat/Lon coordinates in decimal degrees.
 }
@@ -53,8 +64,8 @@ The output of this function could be saved as a CSV file.
 }
 \examples{
 \dontrun{
-# to iterate over BEC-SMOS data files stored in the current working directory
-# and extract soil moisture estimates for the specified geographical locations
+# to iterate over a list of BEC-SMOS data files produced by list_smos() and
+# extract soil moisture estimates for the specified geographical locations
 smos_files <- list_smos()
 lat <- c(40.42, 41.90, 48.86, 52.50, 59.91)
 lon <- c(-3.70, 12.50, 2.35, 13.40, 10.75)

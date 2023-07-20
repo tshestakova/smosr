@@ -1,6 +1,6 @@
 #' Extract BEC-SMOS soil moisture estimates for specific geographical locations
 #'
-#' This function facilitates reading the original BEC-SMOS soil moisture data
+#' This function facilitates reading of the original BEC-SMOS soil moisture data
 #' files and extracting relevant information for specific geographical locations
 #' by using Lat/Lon coordinates in decimal degrees.
 #'
@@ -30,25 +30,29 @@
 #' @param data a character vector as produced by \code{list_smos()} containing
 #' links to the data files on the local computer.
 #'
-#' @param lat a numeric vector containing latitudes of points to extract the
-#' data from (in ‘latlon’ projection).
+#' @param lat a numeric vector containing latitudes of geographical locations to
+#' extract the data from (in ‘latlon’ projection).
 #'
-#' @param lon a numeric vector containing longitudes of points to extract the
-#' data from (in ‘latlon’ projection).
+#' @param lon a numeric vector containing longitudes of geographical locations
+#' to extract the data from (in ‘latlon’ projection).
 #'
-#' @param save a logical vector indicating whether the output should  be saved
-#' as a CSV file. Default is \code{FALSE}.
+#' @param save a logical vector indicating whether the output should be saved as
+#' a CSV file. Default is \code{FALSE}.
 #'
-#' @param filename a character string naming a file for saving the output. If
-#' \code{save} = \code{TRUE} and no \code{filename} is specified by the user,
-#' the data is saved in a file with a generic name ‘SM_output.csv’.
+#' @param dir a character string specifying a path to a local directory in which
+#' to save the CSV file with the output. Default value is \code{NULL} meaning
+#' that the file is stored in a temporary directory of the current R session.
+#'
+#' @param filename a character string naming the CSV file for saving the output.
+#' If \code{save} = \code{TRUE} and no \code{filename} is specified by the user,
+#' the data is saved in a file with a generic name ‘smosr_output.csv’.
 #'
 #' @return a data.matrix with the relevant information as described in Details.
 #'
 #' @examples
 #' \dontrun{
-#' # to iterate over BEC-SMOS data files stored in the current working directory
-#' # and extract soil moisture estimates for the specified geographical locations
+#' # to iterate over a list of BEC-SMOS data files produced by list_smos() and
+#' # extract soil moisture estimates for the specified geographical locations
 #' smos_files <- list_smos()
 #' lat <- c(40.42, 41.90, 48.86, 52.50, 59.91)
 #' lon <- c(-3.70, 12.50, 2.35, 13.40, 10.75)
@@ -65,8 +69,13 @@
 #'
 #' @export
 
-extract_smos <- function(data, lat, lon, save = FALSE,
-                         filename = "SM_output.csv") {
+extract_smos <- function(data, lat, lon, save = FALSE, dir = NULL,
+                         filename = "smosr_output.csv") {
+  if(is.null(dir)) dir <- tempdir()
+  if(!file.exists(dir))
+    stop(simpleError(paste("Specified directory does not exist. Provide a",
+                           "valid path to an existing folder or create a new",
+                           "one to proceed.")))
   poi <- set_coords(lat, lon)
   poi_count <- nrow(poi)
   file_count <- length(data)
@@ -111,7 +120,10 @@ extract_smos <- function(data, lat, lon, save = FALSE,
     utils::setTxtProgressBar(progress_bar, i)
   }
   close(progress_bar)
-  if(save) utils::write.csv(sm_data, filename)
+  if(save) {
+    file_path <- paste0(dir, "/", filename)
+    utils::write.csv(sm_data, file_path)
+  }
   return(sm_data)
 }
 
@@ -146,4 +158,3 @@ set_coords <- function(lat, lon) {
   poi <- cbind(lat, lon)
   return(poi)
 }
-

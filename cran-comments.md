@@ -5,8 +5,7 @@ CRAN revision.
 
 * Please always explain all acronyms in the description text. -> ESA-BEC
   - Done. The acronyms are now explained in the description text as follows:
-    _ESA_ - European Space Agency;
-    _BEC_ - Barcelona Expert Center.
+  *ESA* - European Space Agency; *BEC* - Barcelona Expert Center.
 
 * Please provide a link to the used webservices (ESA data) to the description 
 field of your DESCRIPTION file in the form <http:...> or <https:...> with angle 
@@ -36,19 +35,19 @@ dontrun{} with \donttest{}.
 * Please ensure that your functions do not write by default or in your
 examples/vignettes/tests in the user's home filespace (including the package 
 directory and getwd()). This is not allowed by CRAN policies.
-  - Done. All instances of writing to the user's working directory or creating 
-  new folders were removed or substituted with the path given by tempdir().
+  - Done. All instances of writing to user's working directory or creating new
+  folders have been removed or substituted with a path given by tempdir().
 
 * Please omit any default path in writing functions. In your 
 examples/vignettes/tests you can write to tempdir(). ->
 man/download_smos.Rd; R/download_smos.R
-  - Done. The getwd() is now substituted by tempdir().
+  - Done. All paths in writing functions have been changed from getwd() to 
+  tempdir().
 
-* Please make sure that you do not change the user's options, par or
-working directory. If you really have to do so within functions, please
-ensure with an *immediate* call of on.exit() that the settings are reset
-when the function is exited.
-e.g.:
+* Please make sure that you do not change the user's options, par or working
+directory. If you really have to do so within functions, please ensure with an 
+*immediate* call of on.exit() that the settings are reset when the function is 
+exited. e.g.:
 ```r
 ...
 oldpar <- par(no.readonly = TRUE) # code line i

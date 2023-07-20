@@ -1,14 +1,17 @@
 #' Plot temporal series of BEC-SMOS soil moisture data
 #'
-#' This function plots temporal series of BEC-SMOS soil moisture data
-#' extracted for specific geographical locations using \code{extract_smos()}.
+#' This function plots temporal series of BEC-SMOS soil moisture data extracted
+#' for specific geographical locations.
 #'
-#' Note that the data characterized by the same frequency and SMOS orbit can
-#' be drawn at a time. If the dataset to plot contains a mixture of temporal
-#' resolution and/or SMOS passes, arguments \code{frequency} and \code{orbit}
-#' must be specified.
+#' This function takes as input temporal series of BEC-SMOS soil moisture
+#' estimates extracted for specific geographical locations and plots these data
+#' as a line chart. Note that the data characterized by the same frequency and
+#' SMOS orbit can be drawn at a time. If the dataset to plot contains a mixture
+#' of temporal resolutions and/or SMOS passes, arguments \code{frequency} and
+#' \code{orbit} must be specified. In addition, the dataset can be filtered by
+#' desired data quality and specific dates to be plotted.
 #'
-#' -- Quality assurance (QA) --
+#' **** Quality assurance (QA) ****
 #'
 #' QA flags are coded by four significant bits as described below:
 #'
@@ -39,8 +42,8 @@
 #' Portabella M (2022). SMOS L4 Surface Soil Moisture downscaled maps at 1 km
 #' EASE-2 (reprocessed mode) (V.6.0) [Dataset].
 #'
-#' @param data a data.matrix as produced by \code{list_smos()} containing soil
-#' moisture data to plot.
+#' @param data a data.matrix containing soil moisture data as produced by
+#' \code{extract_smos()}.
 #'
 #' @param freq an integer specifying temporal frequency of the data. Possible
 #' values are: 1 - for daily data, 3 - for 3-day moving averages, and NULL -
@@ -54,23 +57,24 @@
 #'
 #' @param dates a object of class \code{Date} or a character string formatted
 #' as ‘yyyy-mm-dd’ (e.g. ‘2010-06-01’) which specifies the dates to plot the
-#' data for.
+#' data for. A multiple-element object of class Date or a vector should be
+#' passed (e.g. as produced by \code{seq.Date}).
 #'
 #' @param QA a numeric vector specifying the desired data quality to be plotted.
 #' Possible values range from 0 (good quality data) to 15. To know the meanings
-#' of QA > 0, see Details.
+#' of QA flags, see Details.
 #'
 #' @return a line chart
 #'
 #' @examples
 #' \dontrun{
-#' # to plot extracted temporal series of soil moisture data
+#' # to plot extracted temporal series of BEC-SMOS soil moisture data produced by extract_smos()
 #' # with the specified frequency, SMOS orbit and QA
-#' smos_data <- list_smos()
+#' smos_files <- list_smos()
 #' lat <- c(40.42, 41.90, 48.86, 52.50, 59.91)
 #' lon <- c(-3.70, 12.50, 2.35, 13.40, 10.75)
-#' sm_estimates <- extract_smos(data = smos_data, lat = lat, lon = lon)
-#' plot_temporal_smos(data = sm_estimates, freq = 3, orbit = "d", QA = 0)
+#' sm_estimates <- extract_smos(data = smos_files, lat = lat, lon = lon)
+#' plot_temporal_smos(data = sm_estimates, freq = 3, orbit = "des", QA = 0)
 #' }
 #'
 #' @importFrom graphics axis
@@ -177,6 +181,7 @@ plot_temporal_smos <- function(data, freq = NULL, orbit = NULL,
     stop(simpleError(paste("No data to plot. Modify the plotting",
                            "arguments to proceed.")))
   old_parms <- graphics::par(no.readonly = TRUE)
+  on.exit(par(old_parms))
   while(!is.null(grDevices::dev.list())) grDevices::dev.off()
   graphics::par(mar = c(7.6, 4.3, 4.1, 6.4))
   y_lable <- expression("Soil moisture (" * m^3 / m^3 * ")")
@@ -220,5 +225,4 @@ plot_temporal_smos <- function(data, freq = NULL, orbit = NULL,
                    pt.bg = adjustcolor(seq(1:poi_count), alpha.f = 0.5),
                    bty = "n", inset = c(1,0), xpd = TRUE, cex = 0.8,
                    lwd = 1.5, seg.len = 1.5)
-  graphics::par(old_parms)
 }
