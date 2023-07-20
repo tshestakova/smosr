@@ -1,6 +1,6 @@
 Package: smosr
 Title: Acquire and Explore BEC-SMOS L4 Soil Moisture Data in R
-Version: 1.0.0
+Version: 1.0.1
 Date: 2023-07-13
 Authors@R: 
     c(person(given = "Tatiana A.",
