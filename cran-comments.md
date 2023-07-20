@@ -4,12 +4,15 @@ This is a resubmission. In this version I have addressed the issue found during
 CRAN revision.
 
 * Please always explain all acronyms in the description text. -> ESA-BEC
-  - Done.
+  - Done. The acronyms are now explained in the description text as follows:
+    _ESA_ - European Space Agency;
+    _BEC_ - Barcelona Expert Center.
 
-*Please provide a link to the used webservices (ESA data) to the description 
+* Please provide a link to the used webservices (ESA data) to the description 
 field of your DESCRIPTION file in the form <http:...> or <https:...> with angle 
 brackets for auto-linking and no space after 'http:' and 'https:'.
-  - Done.
+  - Done. The link to ESA data (<https://earth.esa.int/eogateway/missions/smos/data>) 
+  has been included.
 
 * \dontrun{} should only be used if the example really cannot be executed (e.g. 
 because of missing additional software, missing API keys, ...) by the user. 
@@ -17,7 +20,7 @@ That's why wrapping examples in \dontrun{} adds the comment ("# Not run:") as a
 warning for the user. Does not seem necessary. Please replace \dontrun with 
 \donttest.
   - to run examples in `smosr` package, a valid username and a password are 
-  required for accessing a remote server and downloading the data. Thus, the 
+  required for accessing the remote server and downloading the data. Thus, the 
   examples cannot be executed on CRAN without a previous user registration, which
   suggests that \dontrun{} is an appropriate marker. 
 
@@ -33,8 +36,8 @@ dontrun{} with \donttest{}.
 * Please ensure that your functions do not write by default or in your
 examples/vignettes/tests in the user's home filespace (including the package 
 directory and getwd()). This is not allowed by CRAN policies.
-  - Done. All instances of writing to the user's working directory were removed or
-  substituted with the directory given by tempdir().
+  - Done. All instances of writing to the user's working directory or creating 
+  new folders were removed or substituted with the path given by tempdir().
 
 * Please omit any default path in writing functions. In your 
 examples/vignettes/tests you can write to tempdir(). ->
@@ -66,9 +69,8 @@ If you're not familiar with the function, please check ?on.exit. This
 function makes it possible to restore options before exiting a function
 even if the function breaks. Therefore it needs to be called immediately
 after the option change within a function.
-  - Done. on.exit() instruction was called straight after any changes of user's 
-  par or working directory. Note those changes are a few and only used when 
-  necessary.
+  - Done. on.exit() instruction are now called straight after any changes of 
+  user's par. No changes are done to user's options or working directory.
 
 ## Test environments
 
