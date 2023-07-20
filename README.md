@@ -12,7 +12,7 @@ Acquire and Explore BEC-SMOS L4 Soil Moisture Data in R
 ## Overview
 
 The goal of `smosr` is to automate accessing, downloading and exploring Soil 
-Moisture and Ocean Salinity (SMOS) Level-4 (L4) data developed by Barcelona 
+Moisture and Ocean Salinity (SMOS) Level 4 (L4) data developed by Barcelona 
 Expert Center (BEC). Particularly, it includes functions to search for, acquire, 
 extract, and plot BEC-SMOS L4 soil moisture data downscaled to ~1 km spatial 
 resolution. 
