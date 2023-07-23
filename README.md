@@ -3,6 +3,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/tshestakova/smosr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tshestakova/smosr/actions/workflows/R-CMD-check.yaml)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/smosr)](https://CRAN.R-project.org/package=smosr)
 <!-- badges: end -->
 
 # smosr
@@ -11,11 +13,11 @@ Acquire and Explore BEC-SMOS L4 Soil Moisture Data in R
 
 ## Overview
 
-The goal of `smosr` is to automate accessing, downloading and exploring Soil 
-Moisture and Ocean Salinity (SMOS) Level 4 (L4) data developed by Barcelona 
-Expert Center (BEC). Particularly, it includes functions to search for, acquire, 
-extract, and plot BEC-SMOS L4 soil moisture data downscaled to ~1 km spatial 
-resolution. 
+The goal of `smosr` is to automate accessing, downloading and exploring
+Soil Moisture and Ocean Salinity (SMOS) Level 4 (L4) data developed by
+Barcelona Expert Center (BEC). Particularly, it includes functions to
+search for, acquire, extract, and plot BEC-SMOS L4 soil moisture data
+downscaled to ~1 km spatial resolution.
 
 ## Installation
 
@@ -59,11 +61,11 @@ download_smos(data = smos_data)
 # to list all BEC-SMOS data files currently stored in the temporary directory
 smos_files <- list_smos()
 head(smos_files, 5)
-#> [1] "C:/Users/.../Temp/RtmpInOFOr/BEC_SM____SMOS__EUM_L4__D_20100715T183618_001km_3d_REP_v6.0.nc"
-#> [2] "C:/Users/.../Temp/RtmpInOFOr/BEC_SM____SMOS__EUM_L4__D_20110715T182802_001km_3d_REP_v6.0.nc"
-#> [3] "C:/Users/.../Temp/RtmpInOFOr/BEC_SM____SMOS__EUM_L4__D_20120714T182030_001km_3d_REP_v6.0.nc"
-#> [4] "C:/Users/.../Temp/RtmpInOFOr/BEC_SM____SMOS__EUM_L4__D_20130714T181231_001km_3d_REP_v6.0.nc"
-#> [5] "C:/Users/.../Temp/RtmpInOFOr/BEC_SM____SMOS__EUM_L4__D_20140714T180441_001km_3d_REP_v6.0.nc"
+#> [1] "C:\\Users\\...\\Temp\\RtmpojyuH6/BEC_SM____SMOS__EUM_L4__D_20100715T183618_001km_3d_REP_v6.0.nc"
+#> [2] "C:\\Users\\...\\Temp\\RtmpojyuH6/BEC_SM____SMOS__EUM_L4__D_20110715T182802_001km_3d_REP_v6.0.nc"
+#> [3] "C:\\Users\\...\\Temp\\RtmpojyuH6/BEC_SM____SMOS__EUM_L4__D_20120714T182030_001km_3d_REP_v6.0.nc"
+#> [4] "C:\\Users\\...\\Temp\\RtmpojyuH6/BEC_SM____SMOS__EUM_L4__D_20130714T181231_001km_3d_REP_v6.0.nc"
+#> [5] "C:\\Users\\...\\Temp\\RtmpojyuH6/BEC_SM____SMOS__EUM_L4__D_20140714T180441_001km_3d_REP_v6.0.nc"
 
 # to extract soil moisture estimates for the specified geographical locations
 # from the list of data files obtained in the previous steps
